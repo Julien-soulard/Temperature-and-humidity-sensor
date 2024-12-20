@@ -1,0 +1,121 @@
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+const TempHumidityChart = () => {
+  const data = [
+    { time: '15/12 10h', temperature: 20.3, humidity: 43.0 },
+    { time: '15/12 12h', temperature: 21.7, humidity: 44.4 },
+    { time: '15/12 14h', temperature: 22.1, humidity: 46.9 },
+    { time: '15/12 16h', temperature: 21.9, humidity: 47.4 },
+    { time: '15/12 18h', temperature: 21.9, humidity: 48.1 },
+    { time: '15/12 20h', temperature: 22.4, humidity: 53.1 },
+    { time: '15/12 22h', temperature: 22.0, humidity: 49.8 },
+    { time: '16/12 00h', temperature: 21.9, humidity: 50.6 },
+    { time: '16/12 02h', temperature: 21.9, humidity: 48.9 },
+    { time: '16/12 04h', temperature: 22.0, humidity: 48.6 },
+    { time: '16/12 06h', temperature: 22.1, humidity: 47.8 },
+    { time: '16/12 08h', temperature: 22.0, humidity: 49.7 },
+    { time: '16/12 10h', temperature: 21.8, humidity: 49.2 },
+    { time: '16/12 12h', temperature: 21.9, humidity: 48.6 },
+    { time: '16/12 14h', temperature: 21.9, humidity: 48.5 },
+    { time: '16/12 16h', temperature: 22.0, humidity: 47.9 },
+    { time: '16/12 18h', temperature: 21.9, humidity: 47.2 },
+    { time: '16/12 20h', temperature: 21.9, humidity: 50.6 },
+    { time: '16/12 22h', temperature: 21.9, humidity: 57.4 },
+    { time: '17/12 00h', temperature: 21.7, humidity: 57.3 },
+    { time: '17/12 02h', temperature: 21.6, humidity: 54.3 },
+    { time: '17/12 04h', temperature: 21.6, humidity: 53.2 },
+    { time: '17/12 06h', temperature: 21.7, humidity: 52.3 },
+    { time: '17/12 08h', temperature: 21.9, humidity: 52.6 },
+    { time: '17/12 10h', temperature: 21.9, humidity: 48.4 },
+    { time: '17/12 12h', temperature: 22.0, humidity: 47.2 },
+    { time: '17/12 14h', temperature: 22.1, humidity: 48.1 },
+    { time: '17/12 16h', temperature: 22.1, humidity: 49.1 },
+    { time: '17/12 18h', temperature: 21.9, humidity: 46.8 },
+    { time: '17/12 20h', temperature: 22.0, humidity: 48.1 },
+    { time: '17/12 22h', temperature: 21.9, humidity: 48.3 },
+    { time: '18/12 00h', temperature: 21.7, humidity: 47.4 },
+    { time: '18/12 02h', temperature: 21.7, humidity: 46.9 },
+    { time: '18/12 04h', temperature: 21.8, humidity: 46.3 },
+    { time: '18/12 06h', temperature: 21.8, humidity: 46.4 },
+    { time: '18/12 08h', temperature: 22.4, humidity: 48.5 },
+    { time: '18/12 10h', temperature: 21.8, humidity: 48.1 },
+    { time: '18/12 12h', temperature: 21.7, humidity: 49.8 },
+    { time: '18/12 14h', temperature: 22.1, humidity: 50.2 },
+    { time: '18/12 16h', temperature: 22.2, humidity: 49.6 },
+    { time: '18/12 18h', temperature: 22.1, humidity: 64.3 },
+    { time: '18/12 20h', temperature: 21.9, humidity: 57.6 },
+    { time: '18/12 22h', temperature: 21.8, humidity: 56.5 },
+    { time: '19/12 00h', temperature: 21.6, humidity: 55.8 },
+    { time: '19/12 02h', temperature: 21.6, humidity: 56.0 },
+    { time: '19/12 04h', temperature: 21.6, humidity: 55.5 },
+    { time: '19/12 06h', temperature: 21.7, humidity: 53.6 },
+    { time: '19/12 08h', temperature: 22.2, humidity: 52.8 },
+    { time: '19/12 10h', temperature: 22.4, humidity: 51.0 },
+    { time: '19/12 12h', temperature: 22.5, humidity: 51.7 },
+    { time: '19/12 14h', temperature: 22.8, humidity: 50.6 },
+    { time: '19/12 16h', temperature: 22.9, humidity: 50.3 },
+    { time: '19/12 18h', temperature: 22.7, humidity: 49.4 },
+    { time: '19/12 20h', temperature: 22.4, humidity: 49.1 },
+    { time: '19/12 22h', temperature: 22.1, humidity: 47.9 },
+    { time: '20/12 00h', temperature: 22.1, humidity: 46.6 },
+    { time: '20/12 02h', temperature: 22.2, humidity: 45.0 },
+    { time: '20/12 04h', temperature: 22.3, humidity: 44.5 },
+    { time: '20/12 06h', temperature: 22.2, humidity: 43.8 },
+    { time: '20/12 08h', temperature: 22.4, humidity: 43.3 },
+    { time: '20/12 10h', temperature: 22.3, humidity: 42.0 },
+    { time: '20/12 12h', temperature: 22.5, humidity: 41.9 },
+    { time: '20/12 14h', temperature: 22.4, humidity: 41.7 }
+  ];
+
+  return (
+    <div className="p-4 bg-white rounded-lg shadow-lg">
+      <h2 className="text-xl font-bold mb-4 text-center">Température et Humidité relative (15-20 décembre 2024)</h2>
+      <div className="h-96">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 20 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis 
+              dataKey="time"
+              interval={5}
+              angle={-45}
+              textAnchor="end"
+              height={60}
+            />
+            <YAxis 
+              yAxisId="left" 
+              domain={[18, 24]}
+              label={{ value: 'Température (°C)', angle: -90, position: 'insideLeft' }} 
+            />
+            <YAxis 
+              yAxisId="right" 
+              orientation="right" 
+              domain={[40, 70]}
+              label={{ value: 'Humidité (%)', angle: 90, position: 'insideRight' }} 
+            />
+            <Tooltip />
+            <Legend />
+            <Line
+              yAxisId="left"
+              type="monotone"
+              dataKey="temperature"
+              name="Température"
+              stroke="#2196F3"
+              activeDot={{ r: 8 }}
+            />
+            <Line
+              yAxisId="right"
+              type="monotone"
+              dataKey="humidity"
+              name="Humidité"
+              stroke="#9C27B0"
+              activeDot={{ r: 8 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+};
+
+export default TempHumidityChart;
